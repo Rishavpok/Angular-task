@@ -28,6 +28,13 @@ loadedUsers: User[] = [];
    onFetchUser(){
      this.fetchUser();
    }
+
+   onDeleteUser(){
+      this.http.delete('https://angular-task-cd765-default-rtdb.firebaseio.com/users.json').
+      subscribe(() => {
+        this.loadedUsers =[];
+      } )
+   }
   private fetchUser(){
     this.http.get('https://angular-task-cd765-default-rtdb.firebaseio.com/users.json')
     .pipe(map((responseData : any )=> {
