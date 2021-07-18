@@ -1,0 +1,110 @@
+<div class="container">
+<div class="form">
+    <form #userForm="ngForm" (ngSubmit)="onCreateUser(userForm.value)">
+        <div class="mb-3">
+          <label  class="form-label">Name</label>
+          <input 
+          type="name"
+           name="name" 
+           ngModel 
+           required
+            class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Profile Image</label>
+            <input 
+             name="image"
+             ngModel
+             type="file"
+             required 
+             class="form-control">
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Gender</label>
+            <select name="gender"  ngModel  required class="form-select" aria-label="Default select example">
+                <option selected>Choose Your Gender</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Others</option>
+              </select>
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Phone</label>
+            <input 
+            name="phone"
+             ngModel
+              type="tel" 
+              id="phone" 
+              required 
+              name="phone" 
+              class="form-control" >
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Email address</label>
+            <input  
+            name="email" 
+            ngModel 
+            type="email" 
+            required 
+            class="form-control">
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Nationality</label>
+            <input
+               name="nationality"
+               ngModel type="name" 
+               required 
+               class="form-control" >
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Date of Birth</label>
+            <input 
+            name="dob" 
+            ngModel 
+            type="date" 
+            required 
+            class="form-control" >
+          </div>
+          <div class="mb-3">
+            <label  class="form-label">Education</label>
+            <input 
+            type="name" 
+            name="education"
+            ngModel
+            required 
+            multiple 
+            class="form-control" >
+          </div>
+          <div>
+              <button 
+               class="btn btn-primary"
+               [disabled]="!userForm.valid"
+               type="submit"> Add User </button> 
+          </div>
+      </form>
+</div>
+</div>
+<hr>
+
+<div class="container">
+ <div class="row">
+   <div class="col-xs-12 col-md-6 col-md-offset-3">
+     <button class="btn btn-primary" (click)="onFetchUser()" >Fetch User</button> | 
+     <button
+     class="btn btn-danger">
+     Clear User
+   </button>
+   </div>
+ </div>
+ <div class="row">
+ <div class="col-xs-12 col-md-6 col-md-offset-3">
+   <p *ngIf="loadedUsers.length <1 " >No user Available!!</p>
+    <ul class="list-group" *ngIf="loadedUsers.length>=1">
+      <li class="list-group-item" *ngFor=" let user of loadedUsers " >
+        <h1>{{user.name}}</h1>
+        <p>{{user.education}}</p>
+      </li>
+    </ul>
+ </div>
+ </div>
+</div>
