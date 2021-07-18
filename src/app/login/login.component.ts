@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AuthService ,AuthResponseData } from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   isLoading = false
   error : string = ''
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, 
+    private routes: Router) { }
 
   ngOnInit(): void {
   }
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
     authObs.subscribe(resData => {
       console.log(resData)
       this.isLoading = false
+       this.routes.navigate(['/user-form'])
     },
     errorMessage => {
        

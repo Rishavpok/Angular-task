@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { User } from '../login/user.model';
+import { User } from '../user-form/user.model';
 
 @Component({
   selector: 'app-user-form',
